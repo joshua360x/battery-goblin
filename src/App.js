@@ -37,11 +37,12 @@ function App() {
     setGoblinFormName('');
     setGoblinFormHP(0);
     setGoblinFormColor('red');
+    setFilteredGoblins([...allGoblins, newGoblin]);
   }
 
   function handleDeleteGoblin(id) {
     // find the index of the goblin in allGoblins with this id
-    const index = allGoblins.findIndex(goblin => goblin.name === id);
+    const index = allGoblins.findIndex((goblin) => goblin.name === id);
     // use splice to delete the goblin object at this index
     allGoblins.splice(index, 1);
     // update the allGoblins array immutably to this new, smaller array
@@ -54,6 +55,8 @@ function App() {
     // if there is a search argument, set the filtered goblins to the filtered goblins
     if (search) {
       setFilteredGoblins(filter);
+    } else {
+      setFilteredGoblins(allGoblins);
     }
     // if the search argument is undefined, set the filtered goblins in state to just be the array of all goblins
   }

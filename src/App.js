@@ -41,7 +41,7 @@ function App() {
 
   function handleDeleteGoblin(id) {
     // find the index of the goblin in allGoblins with this id
-    const index = allGoblins.findIndex((goblin) => goblin.name === id);
+    const index = allGoblins.findIndex(goblin => goblin.name === id);
     // use splice to delete the goblin object at this index
     allGoblins.splice(index, 1);
     // update the allGoblins array immutably to this new, smaller array
@@ -50,7 +50,7 @@ function App() {
 
   function handleFilterGoblins(search) {
     // use the filter method to get an array of goblins whose name includes this search argument
-    const filter = allGoblins.filter((goblin) => goblin.name === search);
+    const filter = allGoblins.filter((goblin) => goblin.name.includes(search));
     // if there is a search argument, set the filtered goblins to the filtered goblins
     if (search) {
       setFilteredGoblins(filter);

@@ -24,7 +24,7 @@ function App() {
 
     // on submit, make a new goblin object with a random id, a name that comes from the form state, an hp that comes from the form state, and a color that comes from the form state
     const newGoblin = {
-      id: Math.random(),
+      id: Math.floor(Math.random() * 1000),
       name: goblinFormName,
       hp: goblinFormHP,
       color: goblinFormColor,
@@ -37,14 +37,17 @@ function App() {
     setGoblinFormName('');
     setGoblinFormHP(0);
     setGoblinFormColor('red');
-    setFilteredGoblins([...allGoblins, newGoblin]);
+    // setFilteredGoblins([...allGoblins, newGoblin]);
   }
 
   function handleDeleteGoblin(id) {
     // find the index of the goblin in allGoblins with this id
-    const index = allGoblins.findIndex((goblin) => goblin.name === id);
+    const index = allGoblins.findIndex((goblin) => goblin.id === id);
+
     // use splice to delete the goblin object at this index
+
     allGoblins.splice(index, 1);
+
     // update the allGoblins array immutably to this new, smaller array
     setAllGoblins([...allGoblins]);
   }
@@ -70,8 +73,6 @@ function App() {
             use the goblin form state to make a goblin object and to display it. 
             This will let the user see the current form state 
           */
-            handleDeleteGoblin,
-            id: Math.random(),
             name: goblinFormName,
             hp: goblinFormHP,
             color: goblinFormColor,
